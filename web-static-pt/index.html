@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title>P2Pool</title>
+        <title>P2Pool - Plentygadget</title>
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <script type="text/javascript" src="d3.v2.min.js"></script>
 	    <link href="css/bootstrap.css" rel="stylesheet">
@@ -39,8 +39,10 @@
 
 			function LoadData()
 			{
+			
+			
 				$("#blocks").html("<tr><th>ID</th><th>Time</th><th>Hash / Explorer link</th><th>Share</th></tr>");
-				$("#payouts").html("<tr><th>address</th><th>amount in <span class=\"symbol\"></span></th></tr>");
+				$("#payouts").html("<tr><th>Endereço</th><th>Valor em <span class=\"symbol\"></span></th></tr>");
 				function values(o){ res = []; for(var x in o) res.push(o[x]); return res; }
 				
 				d3.json('/web/version', function(version) {
@@ -142,7 +144,7 @@
 										  
 						  /// ============================================
 								var data = [
-								['Local speed', local],['Local dead speed', local_dead], ['Global speed', global_stats.pool_hash_rate]
+								['Vel. Local', local],['Vel. Morta Local', local_dead], ['Vel. Global', global_stats.pool_hash_rate]
 							  ];
 								
                                                           if (plot2) {plot2.destroy();}
@@ -167,7 +169,7 @@
 					
 					/// ============================================
 					var data = [
-					['Good', local_stats.shares.total - (local_stats.shares.orphan + local_stats.shares.dead)],['Dead', local_stats.shares.dead], ['Orphaned', local_stats.shares.orphan]
+					['Boas', local_stats.shares.total - (local_stats.shares.orphan + local_stats.shares.dead)],['Mortas', local_stats.shares.dead], ['Órfãs', local_stats.shares.orphan]
 				  ];
 				  				
 	                          if (plot1) {plot1.destroy();}
@@ -232,23 +234,41 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="/">Rav3n_pl P2Pool pool (<span class="symbol upper"></span>) node</a>
+          <a class="brand" href="/">P2Pool - Plentygadget pool (<span class="symbol upper"></span>) node</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-			  <li class="active"><a href="index.html">Stats</a></li>
-			  <li><a href="graphs.html">Graph</a></li>
-              <li><a href="https://github.com/Rav3nPL/p2pool-rav">Contact</a></li>
+			  <li class="active"><a href="index.html">Estado</a></li>
+			  <li><a href="graphs.html">Gráficos</a></li>
+              <li><a href="http://pools.plentygadget.pt/contact.php">Contactos</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
+		
       </div>
     </div>
-<div><p>Typical cgminer config for GPU scrypt coin: "cgminer --scrypt -Q 0 -o pool.address:port -u PayoutAddress -p xxx --restOfCgminerOptions"</p></div>
+<div style="border-bottom: 1px solid #ddd;" align="center">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- P2Pool - Top Banner -->
+		<ins class="adsbygoogle"
+		style="display:inline-block;width:970px;height:90px"
+		data-ad-client="ca-pub-9434366677231576"
+		data-ad-slot="3290478843"></ins>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+</div>	
+<div align="center">
+	<br/>
+	<p>  	Configuração típica para cgminer-GPU e Algoritmo Scryptmoeda: "cgminer --scrypt -Q 0 -o pool.address:port -u EndereçoParaPagamento -p qualquercoisa --RestoDasOpçõesDoCgminer"</p>
+	<br/>
+</div>	
+
+<div>
 	<ul class="nav nav-tabs" id="myTab">
-	  	<li class="active"><a href="#stats" data-toggle="tab"><i class="icon-user"></i>&nbsp;Pool stats</a></li>
-	  	<li><a href="#shares" data-toggle="tab"><i class="icon-refresh"></i>&nbsp;Share explorer</a></li>
-	  	<li><a href="#lastblocks" data-toggle="tab"><i class="icon-list-alt"></i>&nbsp;Last blocks</a></li>
-		<li><a href="#mainnodepayout" data-toggle="tab"><i class="icon-download-alt"></i>&nbsp;Payout</a></li>
+	  	<li class="active"><a href="#stats" data-toggle="tab"><i class="icon-user"></i>&nbsp;Estado da Pool</a></li>
+	  	<li><a href="#shares" data-toggle="tab"><i class="icon-refresh"></i>&nbsp;Explorador de Share</a></li>
+	  	<li><a href="#lastblocks" data-toggle="tab"><i class="icon-list-alt"></i>&nbsp;Último blocos</a></li>
+		<li><a href="#mainnodepayout" data-toggle="tab"><i class="icon-download-alt"></i>&nbsp;Pagamento</a></li>
 	</ul>
 	<div class="tab-content">
 	  	<div class="tab-pane active" id="stats">
@@ -256,68 +276,91 @@
 				<div class="well" style="width:1000px">
 				<div class="navbar" style="width: 560px;">
 				  <div class="navbar-inner">
-				    <a class="brand" href="javascript:void(0)">Scale</a>
+				    <a class="brand" href="javascript:void(0)">Escala</a>
 				    <ul class="nav" id="scale_menu">
-				      <li id="scale1"><a href="javascript:ChangeCurrentPeriod('hour', 'scale1');">Hour</a></li>
-				      <li id="scale2" class="active"><a href="javascript:ChangeCurrentPeriod('day', 'scale2');">Day</a></li>
-				      <li id="scale3"><a href="javascript:ChangeCurrentPeriod('week', 'scale3');">Week</a></li>
-				      <li id="scale4"><a href="javascript:ChangeCurrentPeriod('month', 'scale4');">Month</a></li>
-				      <li id="scale5"><a href="javascript:ChangeCurrentPeriod('year', 'scale5');">Year</a></li>
+				      <li id="scale1"><a href="javascript:ChangeCurrentPeriod('hour', 'scale1');">Hora</a></li>
+				      <li id="scale2" class="active"><a href="javascript:ChangeCurrentPeriod('day', 'scale2');">Dia</a></li>
+				      <li id="scale3"><a href="javascript:ChangeCurrentPeriod('week', 'scale3');">Semana</a></li>
+				      <li id="scale4"><a href="javascript:ChangeCurrentPeriod('month', 'scale4');">Mês</a></li>
+				      <li id="scale5"><a href="javascript:ChangeCurrentPeriod('year', 'scale5');">Ano</a></li>
 				      <li><input type="checkbox" name="autorefresh" id="autorefresh" /><label for="autorefresh">Auto-refresh</label></li>
 				    </ul>
 				  </div>
 				</div>
 				<svg id="main-local"></svg></div>
 				<br/>
+				<div align="center">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- P2Pool - Banner -->
+						<ins class="adsbygoogle"
+						style="display:inline-block;width:468px;height:60px"
+						data-ad-client="ca-pub-9434366677231576"
+						data-ad-slot="3569680442"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>	
+				<br/>
 				<div class="well" style="width:1300px">
 					<table class="table table-striped" style="width: 1300px">
 						<tbody>
 							<tr>
-							  <td><h5>Local rate</h5></td>
+							  <td><h5>Taxa Local</h5></td>
 							  <td><span id="local_rate" class="label"></span> (<span id="local_doa"></span> DOA)</td>
 							  <td></td>
-							  <td><h5>Expected time to share</h5></td>
-							  <td><span id="time_to_share" class="label"></span> (<span id="time_to_share_minute"></span> minutes)</td>
+							  <td><h5>Tempo Esperado por share</h5></td>
+							  <td><span id="time_to_share" class="label"></span> (<span id="time_to_share_minute"></span> minutos)</td>
 							</tr>
 							<tr>
 							  <td><h5>Shares</h5></td>
-							  <td><span id="shares_total" class="label"></span> total (<span id="shares_orphan" class="label label-warning"></span> orphaned, <span id="shares_dead" class="label label-warning"></span> dead) Efficiency: <span class="label label-info" id="efficiency"></span></td>
+							  <td><span id="shares_total" class="label"></span> total (<span id="shares_orphan" class="label label-warning"></span> órfãs, <span id="shares_dead" class="label label-warning"></span> mortas) Eficiência: <span class="label label-info" id="efficiency"></span></td>
 							  <td></td>
-							  <td><h5>Payout if a block were found NOW</h5></td>
-							  <td><span id="payout_amount" class="label"></span> <span class="symbol"></span></td>
+							  <td><h5>Pool Fee</h5></td>
+							  <td><span class="label label-inverse" 2% >2%</span></td>
 							</tr>
 							<tr>
-							<tr>
-							  <td><h5>Pool rate</h5></td>
-							  <td><span id="pool_rate" class="label label-inverse"></span> (<span id="pool_stale"></span> DOA+orphan)</td>
+							  <td><h5>Taxa Pool</h5></td>
+							  <td><span id="pool_rate" class="label label-inverse"></span> (<span id="pool_stale"></span> DOA+órfãs)</td>
 							  <td></td>
-							  <td><h5>Share difficulty</h5></td>
+							  <td><h5>Dificuldade da Share</h5></td>
 							  <td><span id="difficulty" class="label label-inverse"></span></td>
 							</tr>
 							<tr>
-							  <td><h5>Node uptime</h5></td>
-							  <td><span id="uptime_days" class="label label-inverse"></span> (<span id="uptime_hours"></span> hours)</td>
+							  <td><h5>Nó uptime</h5></td>
+							  <td><span id="uptime_days" class="label label-inverse"></span> (<span id="uptime_hours"></span> horas)</td>
 							  <td></td>
 							  <td><h5>Peers</h5></td>
 							  <td><span id="peers_out"></span> out, <span id="peers_in"></span> in</td>
 							</tr>
-							  <td><h5>Current block value</h5></td>
+							  <td><h5>Valor do bloco actual</h5></td>
 							  <td><span id="block_value" class="label label-inverse"></span> <span class="symbol"></span></td>
 							  <td></td>
-							  <td><h5>Expected time to block</h5></td>
+							  <td><h5>Tempo esperado para o bloco</h5></td>
 							  <td><span id="time_to_block" class="label"></span></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<br/>
+				<div align="center">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- P2Pool - Banner -->
+						<ins class="adsbygoogle"
+						style="display:inline-block;width:468px;height:60px"
+						data-ad-client="ca-pub-9434366677231576"
+						data-ad-slot="3569680442"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>	
+				<br/>
 				<div style="width: 1340px">
 					<div class="well" style="width:600px; float: left">
-						<h4>Local Shares</h4>
+						<h4>Shares Locais</h4>
 						<div id="ShareChart" width="450" height="450"></div>
 					</div>
 					<div class="well" style="width:600px; float: right">
-						<h4>Global pool speed</h4>
+						<h4>Velocidade Global da Pool</h4>
 						<div id="SpeedChart" width="450" height="450"></div>
 					</div>
 				</div>
@@ -325,27 +368,42 @@
 			</center>
 		</div>
 	  	<div class="tab-pane" id="shares">
-			<p>Best share: <span id="best_share"></span></p>
-			<p>Verified heads: <span id="verified_heads"></span></p>
+			<p>Melhor share: <span id="best_share"></span></p>
+			<p>Heads verificadas: <span id="verified_heads"></span></p>
 			<p>Heads: <span id="heads"></span></p>
-			<p>Verified tails: <span id="verified_tails"></span></p>
-			<p>Tails: <span id="tails"></span></p>
+			<p>Caudas Verificadas: <span id="verified_tails"></span></p>
+			<p>Caudas: <span id="tails"></span></p>
 		</div>
+		<br/>
 	  	<div class="tab-pane" id="lastblocks">
 			<table id="blocks" class="table table-striped table-hover">
-			    <tr><th>ID</th><th>Time</th><th>Hash / Explorer link</th><th>Share</th></tr>
+			    <tr><th>ID</th><th>Tempo</th><th>Hash / Explorer link</th><th>Share</th></tr>
 			</table>
 		</div>
 	  	<div class="tab-pane" id="mainnodepayout">
 			<table class="table table-striped table-hover" id="payouts">
-			    <tr><th>Address</th><th>Amount (<span class="symbol"></span>) </th></tr>
+			    <tr><th>Endereço</th><th>Quantidade (<span class="symbol"></span>) </th></tr>
 			</table>
 		</div>
 	</div>
+	<br/>
+	<div align="center">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- P2Pool - Banner -->
+						<ins class="adsbygoogle"
+						style="display:inline-block;width:468px;height:60px"
+						data-ad-client="ca-pub-9434366677231576"
+						data-ad-slot="3569680442"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>	
+				<br/>
 	<div style="border-bottom: 1px solid #ddd;"></div>
 	<center>
         <tt>P2Pool version: <span id="version"></span> <a href="https://github.com/Rav3nPL/p2pool-rav">GIT</a></tt><br/>
 		<tt>Interface by hardcpp <a href="https://github.com/hardcpp/P2PoolExtendedFrontEnd">https://github.com/hardcpp/P2PoolExtendedFrontEnd</a></tt><br/>
+		<tt>Tradução by plentygadet <a href="http://pools.plentygadget.pt">http://pools.plentygadget.pt</a></tt><br/>
 	</center>
 		<br/>
 		<script type="text/javascript">
