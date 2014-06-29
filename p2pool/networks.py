@@ -25,7 +25,7 @@ nets = dict(
         MAX_TARGET=2**256//2**20 - 1,
         PERSIST=False,
         WORKER_PORT=7343,
-        BOOTSTRAP_ADDRS='hiro.qemulab.com'.split(' '),
+        BOOTSTRAP_ADDRS='p2pools.plentygadget.com hiro.qemulab.com'.split(' '),
         ANNOUNCE_CHANNEL='#p2pool-hic',
         VERSION_CHECK=lambda v: True,
     ),
