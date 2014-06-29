@@ -21,9 +21,9 @@ nets = dict(
 
     hirocoin=math.Object(
         P2P_PREFIX='fec3b9de'.decode('hex'),
-        P2P_PORT=9348,
+        P2P_PORT=4343,
         ADDRESS_VERSION=40,
-        RPC_PORT=9347,
+        RPC_PORT=3343,
         RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
             'hirocoinaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
